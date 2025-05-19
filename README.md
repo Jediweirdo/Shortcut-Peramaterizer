@@ -1,6 +1,7 @@
 
-# Shortcut Peramaterizer
+# [Shortcut Peramaterizer](https://github.com/Jediweirdo/Shortcut-Peramaterizer/)
 
+Source: https://github.com/Jediweirdo/Shortcut-Peramaterizer/
 A Scriptable script that passes data given to a shortcut of choice. Made to take advantage of Scriptable's `https://` URL launch scheme for forwarding content to Shortcuts on services that don't support custom/app URLs
 
 I *JUST* realized I spelled the name wrong and it's killing me because it's too late to change it
@@ -8,7 +9,7 @@ I *JUST* realized I spelled the name wrong and it's killing me because it's too 
 
 Because to get a Wikipedia API key, I needed to make an OAuth login flow from scratch. Part of that process involved providing a redirect link for Wikipedia to tack the authorization code I need onto, but I quickly realized two things:
 1. Wikipedia doesn't allow app URLs to be redirect links
-2. Wikipedia gives the authorization code by tacking on a `&code=` parameter to the URL. Shortcuts doesn't accept any input not in the `input` or `text` URL parameter, so even if I could add the `shortcut://` redirect, the actual important part would be ignored
+2. Wikipedia gives the authorization code by tacking on a `code` parameter to the URL. Shortcuts doesn't accept any input not in the `input` or `text` URL parameter, so even if I could add the `shortcut://` redirect, the actual important part would be ignored
 
 As such, this project was born
 
@@ -30,8 +31,8 @@ If you want to start the redirect with `https://`, then it goes as follows:
 https://open.scriptable.app/run/shortcut-peramaterizer?name=[Shortcut Name]&input=[Input Type]
 ```
 To quickly explain each required field:
-- `name=`: The name of the **shortcut** you want this to open
-- `input=`: The input type of the Shortcut ("Clipboard" or "Text" is supported)
+- `name=` - The name of the **shortcut** you want this to open
+- `input=` - The input type of the Shortcut ("Clipboard" or "Text" is supported)
 
 You can also add the Scriptable-specific URLs `openEditor` and `ScriptName` without fear of it being added to the shortcut's input dictionary
 
@@ -39,6 +40,7 @@ After that, you can add as many Parameters as you want to pass into the chosen s
 ```
 [Required parts of URL]&[First Parameter's Name]=[First Parameter's Value]&[Second Parameter's Name]=[Second Parameter's Value]...
 ```
+Note the **ALL CONTENT IN BRACKETS MUST BE URL ENCODED!!!**
 
 For further reading, check out [Scriptable's URL Scheme Docs](https://docs.scriptable.app/urlscheme/) and Apple's [Shortcut URL Scheme Docs](https://support.apple.com/guide/shortcuts/run-a-shortcut-from-a-url-apd624386f42/ios)
 
@@ -46,7 +48,7 @@ For further reading, check out [Scriptable's URL Scheme Docs](https://docs.scrip
 
 You can install this script through [Shareable](https://shareable.vercel.app/script/92). 
 
-Alternatively, you can manually install this by downloading the  [Latest Release](https://github.com/Jediweirdo/Shortcut-Peramaterizer/releases/tag/v1.0.0) and sharing the corresponding `.shortcut` file with Scriptable and selecting "Add Script"
+Alternatively, you can manually install this by downloading the  [Latest Release](https://github.com/Jediweirdo/Shortcut-Peramaterizer/releases/tag/v1.0.0) and sharing the corresponding `.scriptable` file with Scriptable and selecting "Add Script"
 
     
 ## Bulding
